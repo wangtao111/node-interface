@@ -18,7 +18,6 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 router.post('/login', function (req, res) {
-  console.log(req.body);
   var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
@@ -26,20 +25,34 @@ router.post('/login', function (req, res) {
     database : 'manager'
   });
   connection.connect();
-  const sql = 'SELECT * from user_msg where user_name="'+req.body.username+'" and password="'+req.body.password+'"';
+  console.log(req.body.username);
+  const sql = 'SELECT * from user_msg where user_name="'+req.body.username+'"';
   connection.query(sql, function (error, results, fields) {
+    console.log(results);
     if (error){
       throw error;
     } else {
       var data = {};
       if(!results.length){
-        data = {code: 1, response:'用户名或密码有误！'};
+        data = {code: 2, response:'用户名不存在！'};
+        res.send(data);
+        connection.end();
       }else{
-        data = {code: 0, response:'登录成功！'};
+        connection.query('SELECT * from user_msg where user_name="'+req.body.username+'" and password="'+req.body.password+'"', function (error, result, fields) {
+          console.log(111,result);
+          if (error){
+            throw error;
+          } else {
+            if(!result.length){
+              data = {code: 1, response:'密码有误！'};
+            }else{
+              data = {code: 0, response:'登录成功！'};
+            }
+          }
+          res.send(data);
+          connection.end();
+        })
       }
-      console.log(results,data);
-      res.send(data);
-      connection.end();
     }
   });
 });
