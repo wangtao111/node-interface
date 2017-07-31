@@ -3,10 +3,8 @@
  */
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
 var fs = require('fs');
 var path = require('path');
-var moment = require('moment');
 router.use(function timeLog(req, res, next) {
   var s1 = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
   console.log('Time: ', s1);

@@ -26,17 +26,26 @@ router.get('/get_user_msg', function (req, res) {
   connection.connect();
   var pager = {};
   if (req.query.page_size) {
-    pager.page_size = req.query.page_size;
+    pager.page_size = parseInt(req.query.page_size);
   }else{
     res.send({code: 1, msg:'缺少参数page_size'});
     return;
   }
   if(req.query.page){
-    pager.page = req.page;
+    pager.page = req.query.page;
   }else {
     pager.page = 1;
   }
-  const sql = 'SELECT * from user_msg';
+  console.log(req.query);
+  connection.query( 'SELECT * from user_msg', function ( error, result, fields ) {
+    if (error){
+      throw error;
+    } else {
+     pager.total = result.length;
+    }
+  })
+  var start = (pager.page-1) * pager.page_size ? (pager.page-1) * pager.page_size : 1;
+  const sql = 'SELECT * from user_msg limit '+ start + ','+ pager.page_size;
   connection.query( sql, function ( error, results, fields ) {
     var data = {};
     if (error){
@@ -45,9 +54,8 @@ router.get('/get_user_msg', function (req, res) {
       data.code = 0;
       data.msg = '返回成功！';
       data.data = results;
-      pager.total = results.length;
       data.pager = pager;
-      console.log(data);
+      console.log(44444,pager);
       res.send( data );
       connection.end();
     }
