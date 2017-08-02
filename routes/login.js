@@ -4,7 +4,10 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var moment = require('moment');
 var path = require('path');
+var mysql = require('mysql');
+
 router.use(function timeLog(req, res, next) {
   var s1 = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
   console.log('Time: ', s1);
@@ -26,7 +29,6 @@ router.post('/login', function (req, res) {
   console.log(req.body.username);
   const sql = 'SELECT * from user_msg where user_name="'+req.body.username+'"';
   connection.query(sql, function (error, results, fields) {
-    console.log(results);
     if (error){
       throw error;
     } else {
@@ -37,7 +39,6 @@ router.post('/login', function (req, res) {
         connection.end();
       }else{
         connection.query('SELECT * from user_msg where user_name="'+req.body.username+'" and password="'+req.body.password+'"', function (error, result, fields) {
-          console.log(111,result);
           if (error){
             throw error;
           } else {

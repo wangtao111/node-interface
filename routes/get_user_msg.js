@@ -36,17 +36,23 @@ router.get('/get_user_msg', function (req, res) {
   }else {
     pager.page = 1;
   }
-  console.log(req.query);
   connection.query( 'SELECT * from user_msg', function ( error, result, fields ) {
     if (error){
       throw error;
     } else {
      pager.total = result.length;
     }
-  })
-  var start = (pager.page-1) * pager.page_size ? (pager.page-1) * pager.page_size : 1;
-  const sql = 'SELECT * from user_msg limit '+ start + ','+ pager.page_size;
+  });
+  var start = (pager.page-1) * pager.page_size ? (pager.page-1) * pager.page_size : 0;
+  var sql = 'SELECT * from user_msg order by create_time desc limit '+ start + ','+ pager.page_size;
+  if(req.query.username){
+    sql = 'SELECT * from user_msg where user_name like "%'+req.query.username+'%" order by create_time desc limit '+ start + ','+ pager.page_size+'';
+  }
+  console.log(sql);
   connection.query( sql, function ( error, results, fields ) {
+    if(req.query.username){
+      pager.total = results.length;
+    }
     var data = {};
     if (error){
       throw error;
@@ -55,7 +61,6 @@ router.get('/get_user_msg', function (req, res) {
       data.msg = '返回成功！';
       data.data = results;
       data.pager = pager;
-      console.log(44444,pager);
       res.send( data );
       connection.end();
     }

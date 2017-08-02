@@ -35,8 +35,8 @@ router.get('/add_user', function (req, res) {
         connection.end();
         return;
       }else{
-        console.log(req.query);
-        const sql = 'insert into user_msg (user_name,password,province,type) values ("'+req.query.user_name+'","'+req.query.password+'","'+req.query.province+'","'+req.query.type+'")' ;
+        var time = moment(new Date()).format("YYYY-MM-DD HH:mm:ss");
+        const sql = 'insert into user_msg (user_name,password,province,type,create_time) values ("'+req.query.user_name+'","'+req.query.password+'","'+req.query.province+'","'+req.query.type+'","' +time+'")';
         connection.query( sql, function ( error, results, fields ) {
           if(error){
             res.send({code: 1, response: '提交失败'});

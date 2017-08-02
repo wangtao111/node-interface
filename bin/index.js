@@ -7,7 +7,6 @@ var moment = require('moment');
 var app = express();
 var fs = require("fs");
 var path = require('path');
-var mysql = require('mysql');
 var bodyParser = require('body-parser');
 var multer  = require('multer');
 var catch_routes = require('../tools/catch_routes');
@@ -23,10 +22,10 @@ catch_routes(dir, function(err, results) {
   for(var i = 0; i < results.length; i ++){
     app.use(require('../routes/'+results[i]));
   }
-  console.log(results);
+  console.log('路由', results);
 });
 var server = app.listen(8081,'192.168.11.154', function () {
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
 })
