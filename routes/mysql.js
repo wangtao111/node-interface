@@ -8,27 +8,6 @@ router.use(function timeLog(req, res, next) {
   next();
 });
 router.get('/', function (req, res) {
-  var connection = mysql.createConnection({
-    host     : 'database.aegis-info.com',
-    user     : 'casedatamining',
-    password : '!CaseDataMining@2015#',
-    database : 'imonitor'
-  });
-  connection.connect();
-  connection.query('SELECT * from city', function (error, results, fields) {
-    if (error){
-      throw error;
-    } else {
-      var url = path.resolve(__dirname,'../public/html/output.txt');
-      results = JSON.stringify(results);
-      fs.writeFile(url,results,function(err,data){
-        if (err) {
-          return console.error(err);
-        }
-      })
-      res.send(results);
-      connection.end();
-    }
-  });
+  res.send('asdasd');
 });
 module.exports = router;

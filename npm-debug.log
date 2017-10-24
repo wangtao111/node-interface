@@ -2,15 +2,15 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'start' ]
-2 info using npm@3.10.8
-3 info using node@v6.9.1
+2 info using npm@3.10.10
+3 info using node@v6.11.3
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle demonode@0.0.0~prestart: demonode@0.0.0
 6 silly lifecycle demonode@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle demonode@0.0.0~start: demonode@0.0.0
 8 verbose lifecycle demonode@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle demonode@0.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;F:\node\DemoNode\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\Administrator\AppData\Local\Programs\Python\Python36-32;C:\Program Files\nodejs\node.exe;C:\Program Files\Java\jdk1.8.0_77\bin;C:\Program Files\Java\jdk1.8.0_77\jre\bin;C:\Users\Administrator\AppData\Local\Programs\Python\Python36-32\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python36-32\;C:\Users\Administrator\AppData\Roaming\npm;C:\nginx-1.10.3;C:\Program Files\MySQL\MySQL Workbench 6.3 CE
-10 verbose lifecycle demonode@0.0.0~start: CWD: F:\node\DemoNode
+9 verbose lifecycle demonode@0.0.0~start: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;E:\node\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_121\bin;C:\Program Files\Java\jdk1.8.0_121\jre\bin;D:\apache-maven-3.3.9\bin;D:\apache-tomcat-8.5.9\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\Users\Administrator.MS-20170918KGLL\AppData\Roaming\npm
+10 verbose lifecycle demonode@0.0.0~start: CWD: E:\node
 11 silly lifecycle demonode@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/index' ]
 12 silly lifecycle demonode@0.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle demonode@0.0.0~start: Failed to exec start script
@@ -22,14 +22,14 @@
 14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
 14 verbose stack     at emitTwo (events.js:106:13)
 14 verbose stack     at ChildProcess.emit (events.js:191:7)
-14 verbose stack     at maybeClose (internal/child_process.js:877:16)
-14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+14 verbose stack     at maybeClose (internal/child_process.js:920:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:230:5)
 15 verbose pkgid demonode@0.0.0
-16 verbose cwd F:\node\DemoNode
+16 verbose cwd E:\node
 17 error Windows_NT 6.1.7601
 18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
-19 error node v6.9.1
-20 error npm  v3.10.8
+19 error node v6.11.3
+20 error npm  v3.10.10
 21 error code ELIFECYCLE
 22 error demonode@0.0.0 start: `node ./bin/index`
 22 error Exit status 1

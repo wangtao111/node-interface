@@ -24,7 +24,7 @@ catch_routes(dir, function(err, results) {
   }
   console.log('路由', results);
 });
-var server = app.listen(8081,'192.168.11.154', function () {
+var server = app.listen(8081,'192.168.20.60', function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log("应用实例，访问地址为 http://%s:%s", host, port)
